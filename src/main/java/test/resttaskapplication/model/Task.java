@@ -21,5 +21,4 @@ public class Task {
     private LocalDate dateOfCreation;
     @ManyToOne
     private Column column;
-    //Long order
 }

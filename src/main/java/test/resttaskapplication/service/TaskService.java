@@ -1,6 +1,7 @@
 package test.resttaskapplication.service;
 
 import java.util.List;
+import org.springframework.data.domain.PageRequest;
 import test.resttaskapplication.model.Task;
 
 public interface TaskService {
@@ -10,5 +11,5 @@ public interface TaskService {
 
     void delete(Long id);
 
-    List<Task> getAll();
+    List<Task> getAll(PageRequest pageRequest);
 }

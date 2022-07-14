@@ -1,6 +1,7 @@
 package test.resttaskapplication.service;
 
 import java.util.List;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import test.resttaskapplication.model.Column;
 import test.resttaskapplication.repository.ColumnRepository;
@@ -24,7 +25,7 @@ public class ColumnServiceImpl implements ColumnService {
     }
 
     @Override
-    public List<Column> getAll() {
-        return columnRepository.findAll();
+    public List<Column> getAll(PageRequest pageRequest) {
+        return columnRepository.findAll(pageRequest).toList();
     }
 }

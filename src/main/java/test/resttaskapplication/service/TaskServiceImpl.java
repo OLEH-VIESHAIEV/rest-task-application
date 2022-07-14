@@ -1,6 +1,7 @@
 package test.resttaskapplication.service;
 
 import java.util.List;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import test.resttaskapplication.model.Task;
 import test.resttaskapplication.repository.TaskRepository;
@@ -29,7 +30,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> getAll() {
-        return taskRepository.findAll();
+    public List<Task> getAll(PageRequest pageRequest) {
+        return taskRepository.findAll(pageRequest).toList();
     }
 }
