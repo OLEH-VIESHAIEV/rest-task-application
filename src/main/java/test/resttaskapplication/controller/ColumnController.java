@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import test.resttaskapplication.dto.request.ColumnRequestDto;
 import test.resttaskapplication.dto.response.ColumnResponseDto;
 import test.resttaskapplication.mapper.ColumnDtoMapper;
-import test.resttaskapplication.mapper.TaskDtoMapper;
 import test.resttaskapplication.model.Column;
 import test.resttaskapplication.service.ColumnService;
 import test.resttaskapplication.service.SortService;
@@ -27,16 +26,13 @@ public class ColumnController {
     private final ColumnService columnService;
     private final ColumnDtoMapper columnDtoMapper;
     private final SortService sortService;
-    private final TaskDtoMapper taskDtoMapper;
 
     public ColumnController(ColumnService columnService,
                             ColumnDtoMapper columnDtoMapper,
-                            SortService sortService,
-                            TaskDtoMapper taskDtoMapper) {
+                            SortService sortService) {
         this.columnService = columnService;
         this.columnDtoMapper = columnDtoMapper;
         this.sortService = sortService;
-        this.taskDtoMapper = taskDtoMapper;
     }
 
     @PostMapping
@@ -55,6 +51,11 @@ public class ColumnController {
         Column column = columnDtoMapper.mapToModel(requestDto);
         column.setId(id);
         return columnDtoMapper.mapToDto(columnService.save(column));
+    }
+
+    @GetMapping("/{id}")
+    public ColumnResponseDto getById(@PathVariable Long id) {
+        return columnDtoMapper.mapToDto(columnService.getById(id));
     }
 
     @GetMapping
