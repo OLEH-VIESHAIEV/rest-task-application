@@ -20,6 +20,11 @@ public class ColumnServiceImpl implements ColumnService {
     }
 
     @Override
+    public Column getById(Long id) {
+        return columnRepository.getById(id);
+    }
+
+    @Override
     public void delete(Long id) {
         columnRepository.deleteById(id);
     }
